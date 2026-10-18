@@ -1,0 +1,61 @@
+@startuml
+left to right direction
+skinparam shadowing false
+skinparam backgroundColor white
+
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+actor "Пациент" as Patient
+actor "Сотрудник\nрегистратуры" as Registrar
+actor "Врач" as Doctor
+actor "Администратор" as Admin
+
+rectangle "ИС интеллектуальной маршрутизации и сопровождения пациентов поликлиники" {
+  package "Запись на приём и опрос" {
+    usecase "UC-01\nЗаписаться на приём" as UC01
+    usecase "UC-02\nОтменить или\nперенести запись" as UC02
+    usecase "UC-03\nВоспользоваться\nлистом ожидания" as UC03
+    usecase "UC-08\nЗаполнить\nпредварительный опрос" as UC08
+  }
+  package "Медицинское сопровождение" {
+    usecase "UC-04\nПровести приём" as UC04
+    usecase "UC-05\nУправлять эпизодом\nзаболевания" as UC05
+    usecase "UC-06\nСоздать направление\nили назначение" as UC06
+    usecase "UC-07\nПросмотреть\nсводку эпизода" as UC07
+  }
+  package "Учётные записи" {
+    usecase "UC-13\nЗарегистрировать\nпациента" as UC13
+    usecase "UC-11\nУправлять\nпользователями" as UC11
+  }
+  package "Администрирование" {
+    usecase "UC-09\nУправлять\nрасписаниями врачей" as UC09
+    usecase "UC-10\nНастроить\nквоты записи" as UC10
+    usecase "UC-12\nПросмотреть\nаналитику" as UC12
+  }
+}
+
+Patient -- UC01
+Patient -- UC02
+Patient -- UC03
+Patient -- UC08
+Patient -- UC13
+
+Registrar -- UC01
+Registrar -- UC02
+Registrar -- UC03
+Registrar -- UC13
+Registrar -- UC11 : "только сведения\nпациентов"
+
+Doctor -- UC01
+Doctor -- UC02
+Doctor -- UC04
+Doctor -- UC05
+Doctor -- UC06
+Doctor -- UC07
+
+Admin -- UC09
+Admin -- UC10
+Admin -- UC11
+Admin -- UC12
+@enduml
