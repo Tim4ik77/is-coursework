@@ -1,0 +1,1 @@
+Concurrency passed: one winner for final quota and for occupied slot

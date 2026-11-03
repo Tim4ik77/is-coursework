@@ -1,0 +1,15 @@
+SET search_path = clinic, public;
+CREATE INDEX doctor_specialties_lookup ON doctor_specialties(specialty_id,doctor_id);
+CREATE INDEX slots_schedule_start ON time_slots(schedule_id,starts_at);
+CREATE INDEX patient_appointments ON appointments(patient_id,starts_at DESC);
+CREATE INDEX episode_appointments ON appointments(episode_id,starts_at) WHERE episode_id IS NOT NULL;
+CREATE INDEX waiting_fifo ON waitlist_entries(specialty_id,created_at,id) WHERE status='waiting';
+CREATE INDEX holds_expiration ON slot_holds(expires_at) WHERE status='active';
+CREATE INDEX patient_episodes ON episodes(patient_id,opened_at DESC);
+CREATE INDEX inactive_episodes ON episodes(last_activity_at) WHERE status='active';
+CREATE INDEX episode_actions ON care_actions(episode_id,status);
+CREATE INDEX action_results ON study_results(care_action_id,performed_at);
+CREATE INDEX note_addenda_history ON note_addenda(medical_note_id,created_at);
+CREATE INDEX unread_notifications ON notifications(user_id,created_at DESC) WHERE NOT is_read;
+CREATE INDEX patient_duplicate_warning ON patients(lower(full_name),birth_date);
+CREATE INDEX audit_entity_history ON audit_log(entity_type,entity_id,created_at);

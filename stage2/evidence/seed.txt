@@ -1,0 +1,61 @@
+BEGIN
+SET
+SET
+INSERT 0 4
+INSERT 0 2
+ register_patient 
+------------------
+                1
+                2
+                3
+                4
+                5
+                6
+                7
+                8
+                9
+               10
+               11
+               12
+(12 rows)
+
+INSERT 0 2
+INSERT 0 3
+INSERT 0 2
+INSERT 0 2
+CALL
+CALL
+INSERT 0 6
+INSERT 0 2
+INSERT 0 3
+ book_appointment 
+------------------
+                1
+(1 row)
+
+CALL
+INSERT 0 1
+ book_appointment 
+------------------
+                2
+(1 row)
+
+ book_appointment 
+------------------
+                3
+(1 row)
+
+INSERT 0 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 2
+INSERT 0 1
+INSERT 0 2
+INSERT 0 1
+ offer_slot 
+------------
+          1
+(1 row)
+
+COMMIT
+ANALYZE

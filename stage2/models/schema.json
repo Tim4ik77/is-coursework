@@ -1,0 +1,2709 @@
+{
+  "tables": [
+    {
+      "table_name": "appointments",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "slot_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "episode_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "care_action_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "created_by_user_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "booking_type",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": "NO",
+          "default": "'planned'::text",
+          "identity": "NO"
+        },
+        {
+          "name": "starts_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "ends_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": "now()",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "audit_log",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "db_actor",
+          "type": "text",
+          "nullable": "NO",
+          "default": "SESSION_USER",
+          "identity": "NO"
+        },
+        {
+          "name": "action",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "entity_type",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "entity_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": "now()",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "care_actions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "episode_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "created_by_doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "target_specialty_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": "NO",
+          "default": "'assigned'::text",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "daily_quotas",
+      "columns": [
+        {
+          "name": "schedule_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "booking_type",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "slot_limit",
+          "type": "integer",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "doctor_schedules",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "specialty_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "work_date",
+          "type": "date",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "start_time",
+          "type": "time without time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "end_time",
+          "type": "time without time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "slot_minutes",
+          "type": "integer",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "release_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "doctor_specialties",
+      "columns": [
+        {
+          "name": "doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "specialty_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "doctors",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "user_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "full_name",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "episodes",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": "NO",
+          "default": "'active'::text",
+          "identity": "NO"
+        },
+        {
+          "name": "opened_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": "now()",
+          "identity": "NO"
+        },
+        {
+          "name": "last_activity_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": "now()",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "medical_notes",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "appointment_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "author_doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "complaints",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "examination",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "diagnosis",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "recommendations",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "note_addenda",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "medical_note_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "content",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": "now()",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "notifications",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "user_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "message",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "is_read",
+          "type": "boolean",
+          "nullable": "NO",
+          "default": "false",
+          "identity": "NO"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": "now()",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "patients",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "user_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "full_name",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "birth_date",
+          "type": "date",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "oms_number",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "questionnaire_answers",
+      "columns": [
+        {
+          "name": "submission_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "question_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "questionnaire_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "answer_text",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "questionnaire_submissions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "appointment_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "questionnaire_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "submitted_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": "now()",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "questionnaires",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "version",
+          "type": "integer",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "nullable": "NO",
+          "default": "true",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "questions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "questionnaire_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "position",
+          "type": "integer",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "question_text",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "schedule_breaks",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "schedule_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "start_time",
+          "type": "time without time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "end_time",
+          "type": "time without time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "slot_holds",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "waitlist_entry_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "appointment_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "expires_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": "NO",
+          "default": "'active'::text",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "specialties",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "self_booking_allowed",
+          "type": "boolean",
+          "nullable": "NO",
+          "default": "false",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "study_results",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "care_action_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "entered_by_doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "result_text",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "performed_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": "now()",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "system_settings",
+      "columns": [
+        {
+          "name": "singleton",
+          "type": "boolean",
+          "nullable": "NO",
+          "default": "true",
+          "identity": "NO"
+        },
+        {
+          "name": "hold_minutes",
+          "type": "integer",
+          "nullable": "NO",
+          "default": "30",
+          "identity": "NO"
+        },
+        {
+          "name": "inactivity_days",
+          "type": "integer",
+          "nullable": "NO",
+          "default": "60",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "time_slots",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "schedule_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "starts_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "ends_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "login",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "password_hash",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "role",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "is_blocked",
+          "type": "boolean",
+          "nullable": "NO",
+          "default": "false",
+          "identity": "NO"
+        }
+      ]
+    },
+    {
+      "table_name": "waitlist_entries",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "YES"
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "specialty_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "care_action_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "booking_type",
+          "type": "text",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "preferred_from",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "preferred_until",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": null,
+          "identity": "NO"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "nullable": "NO",
+          "default": "'waiting'::text",
+          "identity": "NO"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "nullable": "NO",
+          "default": "now()",
+          "identity": "NO"
+        }
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "table": "users",
+      "name": "users_login_check",
+      "type": "c",
+      "definition": "CHECK ((length(TRIM(BOTH FROM login)) >= 3))",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "users_password_hash_check",
+      "type": "c",
+      "definition": "CHECK ((length(password_hash) >= 20))",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "users_role_check",
+      "type": "c",
+      "definition": "CHECK ((role = ANY (ARRAY['patient'::text, 'doctor'::text, 'registrar'::text, 'admin'::text])))",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "users_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "users_login_not_null",
+      "type": "n",
+      "definition": "NOT NULL login",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "users_password_hash_not_null",
+      "type": "n",
+      "definition": "NOT NULL password_hash",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "users_role_not_null",
+      "type": "n",
+      "definition": "NOT NULL role",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "users_is_blocked_not_null",
+      "type": "n",
+      "definition": "NOT NULL is_blocked",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "users_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "users_login_key",
+      "type": "u",
+      "definition": "UNIQUE (login)",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_full_name_check",
+      "type": "c",
+      "definition": "CHECK ((TRIM(BOTH FROM full_name) <> ''::text))",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_oms_number_check",
+      "type": "c",
+      "definition": "CHECK ((oms_number ~ '^[0-9]{16}$'::text))",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_user_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL user_id",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_full_name_not_null",
+      "type": "n",
+      "definition": "NOT NULL full_name",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_birth_date_not_null",
+      "type": "n",
+      "definition": "NOT NULL birth_date",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_oms_number_not_null",
+      "type": "n",
+      "definition": "NOT NULL oms_number",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_user_id_key",
+      "type": "u",
+      "definition": "UNIQUE (user_id)",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_oms_number_key",
+      "type": "u",
+      "definition": "UNIQUE (oms_number)",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "patients_user_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (user_id) REFERENCES clinic.users(id)",
+      "target": "users"
+    },
+    {
+      "table": "doctors",
+      "name": "doctors_full_name_check",
+      "type": "c",
+      "definition": "CHECK ((TRIM(BOTH FROM full_name) <> ''::text))",
+      "target": null
+    },
+    {
+      "table": "doctors",
+      "name": "doctors_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "doctors",
+      "name": "doctors_user_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL user_id",
+      "target": null
+    },
+    {
+      "table": "doctors",
+      "name": "doctors_full_name_not_null",
+      "type": "n",
+      "definition": "NOT NULL full_name",
+      "target": null
+    },
+    {
+      "table": "doctors",
+      "name": "doctors_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "doctors",
+      "name": "doctors_user_id_key",
+      "type": "u",
+      "definition": "UNIQUE (user_id)",
+      "target": null
+    },
+    {
+      "table": "doctors",
+      "name": "doctors_user_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (user_id) REFERENCES clinic.users(id)",
+      "target": "users"
+    },
+    {
+      "table": "specialties",
+      "name": "specialties_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "specialties",
+      "name": "specialties_name_not_null",
+      "type": "n",
+      "definition": "NOT NULL name",
+      "target": null
+    },
+    {
+      "table": "specialties",
+      "name": "specialties_self_booking_allowed_not_null",
+      "type": "n",
+      "definition": "NOT NULL self_booking_allowed",
+      "target": null
+    },
+    {
+      "table": "specialties",
+      "name": "specialties_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "specialties",
+      "name": "specialties_name_key",
+      "type": "u",
+      "definition": "UNIQUE (name)",
+      "target": null
+    },
+    {
+      "table": "doctor_specialties",
+      "name": "doctor_specialties_doctor_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL doctor_id",
+      "target": null
+    },
+    {
+      "table": "doctor_specialties",
+      "name": "doctor_specialties_specialty_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL specialty_id",
+      "target": null
+    },
+    {
+      "table": "doctor_specialties",
+      "name": "doctor_specialties_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (doctor_id, specialty_id)",
+      "target": null
+    },
+    {
+      "table": "doctor_specialties",
+      "name": "doctor_specialties_doctor_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (doctor_id) REFERENCES clinic.doctors(id)",
+      "target": "doctors"
+    },
+    {
+      "table": "doctor_specialties",
+      "name": "doctor_specialties_specialty_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (specialty_id) REFERENCES clinic.specialties(id)",
+      "target": "specialties"
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_slot_minutes_check",
+      "type": "c",
+      "definition": "CHECK (((slot_minutes >= 5) AND (slot_minutes <= 240)))",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_check",
+      "type": "c",
+      "definition": "CHECK ((start_time < end_time))",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_doctor_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL doctor_id",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_specialty_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL specialty_id",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_work_date_not_null",
+      "type": "n",
+      "definition": "NOT NULL work_date",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_start_time_not_null",
+      "type": "n",
+      "definition": "NOT NULL start_time",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_end_time_not_null",
+      "type": "n",
+      "definition": "NOT NULL end_time",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_slot_minutes_not_null",
+      "type": "n",
+      "definition": "NOT NULL slot_minutes",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_release_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL release_at",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_doctor_id_work_date_key",
+      "type": "u",
+      "definition": "UNIQUE (doctor_id, work_date)",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "doctor_schedules_doctor_id_specialty_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (doctor_id, specialty_id) REFERENCES clinic.doctor_specialties(doctor_id, specialty_id)",
+      "target": "doctor_specialties"
+    },
+    {
+      "table": "schedule_breaks",
+      "name": "schedule_breaks_check",
+      "type": "c",
+      "definition": "CHECK ((start_time < end_time))",
+      "target": null
+    },
+    {
+      "table": "schedule_breaks",
+      "name": "schedule_breaks_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "schedule_breaks",
+      "name": "schedule_breaks_schedule_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL schedule_id",
+      "target": null
+    },
+    {
+      "table": "schedule_breaks",
+      "name": "schedule_breaks_start_time_not_null",
+      "type": "n",
+      "definition": "NOT NULL start_time",
+      "target": null
+    },
+    {
+      "table": "schedule_breaks",
+      "name": "schedule_breaks_end_time_not_null",
+      "type": "n",
+      "definition": "NOT NULL end_time",
+      "target": null
+    },
+    {
+      "table": "schedule_breaks",
+      "name": "schedule_breaks_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "schedule_breaks",
+      "name": "schedule_breaks_schedule_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (schedule_id) REFERENCES clinic.doctor_schedules(id)",
+      "target": "doctor_schedules"
+    },
+    {
+      "table": "time_slots",
+      "name": "time_slots_check",
+      "type": "c",
+      "definition": "CHECK ((starts_at < ends_at))",
+      "target": null
+    },
+    {
+      "table": "time_slots",
+      "name": "time_slots_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "time_slots",
+      "name": "time_slots_schedule_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL schedule_id",
+      "target": null
+    },
+    {
+      "table": "time_slots",
+      "name": "time_slots_starts_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL starts_at",
+      "target": null
+    },
+    {
+      "table": "time_slots",
+      "name": "time_slots_ends_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL ends_at",
+      "target": null
+    },
+    {
+      "table": "time_slots",
+      "name": "time_slots_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "time_slots",
+      "name": "time_slots_schedule_id_tstzrange_excl",
+      "type": "x",
+      "definition": "EXCLUDE USING gist (schedule_id WITH =, tstzrange(starts_at, ends_at, '[)'::text) WITH &&)",
+      "target": null
+    },
+    {
+      "table": "time_slots",
+      "name": "time_slots_schedule_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (schedule_id) REFERENCES clinic.doctor_schedules(id)",
+      "target": "doctor_schedules"
+    },
+    {
+      "table": "daily_quotas",
+      "name": "daily_quotas_booking_type_check",
+      "type": "c",
+      "definition": "CHECK ((booking_type = ANY (ARRAY['self'::text, 'referral'::text, 'followup'::text])))",
+      "target": null
+    },
+    {
+      "table": "daily_quotas",
+      "name": "daily_quotas_slot_limit_check",
+      "type": "c",
+      "definition": "CHECK ((slot_limit >= 0))",
+      "target": null
+    },
+    {
+      "table": "daily_quotas",
+      "name": "daily_quotas_slot_limit_not_null",
+      "type": "n",
+      "definition": "NOT NULL slot_limit",
+      "target": null
+    },
+    {
+      "table": "daily_quotas",
+      "name": "daily_quotas_schedule_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL schedule_id",
+      "target": null
+    },
+    {
+      "table": "daily_quotas",
+      "name": "daily_quotas_booking_type_not_null",
+      "type": "n",
+      "definition": "NOT NULL booking_type",
+      "target": null
+    },
+    {
+      "table": "daily_quotas",
+      "name": "daily_quotas_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (schedule_id, booking_type)",
+      "target": null
+    },
+    {
+      "table": "daily_quotas",
+      "name": "daily_quotas_schedule_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (schedule_id) REFERENCES clinic.doctor_schedules(id)",
+      "target": "doctor_schedules"
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_status_check",
+      "type": "c",
+      "definition": "CHECK ((status = ANY (ARRAY['active'::text, 'closed'::text])))",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_patient_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL patient_id",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_title_not_null",
+      "type": "n",
+      "definition": "NOT NULL title",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_status_not_null",
+      "type": "n",
+      "definition": "NOT NULL status",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_opened_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL opened_at",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_last_activity_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL last_activity_at",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_id_patient_id_key",
+      "type": "u",
+      "definition": "UNIQUE (id, patient_id)",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "episodes_patient_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (patient_id) REFERENCES clinic.patients(id)",
+      "target": "patients"
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_kind_check",
+      "type": "c",
+      "definition": "CHECK ((kind = ANY (ARRAY['referral'::text, 'followup'::text, 'study'::text])))",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_status_check",
+      "type": "c",
+      "definition": "CHECK ((status = ANY (ARRAY['assigned'::text, 'booked'::text, 'completed'::text, 'cancelled'::text])))",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_check",
+      "type": "c",
+      "definition": "CHECK (((kind = 'study'::text) OR (target_specialty_id IS NOT NULL)))",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_episode_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL episode_id",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_created_by_doctor_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL created_by_doctor_id",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_kind_not_null",
+      "type": "n",
+      "definition": "NOT NULL kind",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_title_not_null",
+      "type": "n",
+      "definition": "NOT NULL title",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_status_not_null",
+      "type": "n",
+      "definition": "NOT NULL status",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_id_episode_id_key",
+      "type": "u",
+      "definition": "UNIQUE (id, episode_id)",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_episode_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (episode_id) REFERENCES clinic.episodes(id)",
+      "target": "episodes"
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_created_by_doctor_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (created_by_doctor_id) REFERENCES clinic.doctors(id)",
+      "target": "doctors"
+    },
+    {
+      "table": "care_actions",
+      "name": "care_actions_target_specialty_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (target_specialty_id) REFERENCES clinic.specialties(id)",
+      "target": "specialties"
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_care_action_id_episode_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (care_action_id, episode_id) REFERENCES clinic.care_actions(id, episode_id)",
+      "target": "care_actions"
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_appointment_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL appointment_id",
+      "target": null
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_expires_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL expires_at",
+      "target": null
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_status_not_null",
+      "type": "n",
+      "definition": "NOT NULL status",
+      "target": null
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_booking_type_check",
+      "type": "c",
+      "definition": "CHECK ((booking_type = ANY (ARRAY['self'::text, 'referral'::text, 'followup'::text])))",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_status_check",
+      "type": "c",
+      "definition": "CHECK ((status = ANY (ARRAY['held'::text, 'planned'::text, 'completed'::text, 'cancelled'::text, 'no_show'::text])))",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_check",
+      "type": "c",
+      "definition": "CHECK ((starts_at < ends_at))",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_check1",
+      "type": "c",
+      "definition": "CHECK ((((booking_type = 'self'::text) AND (care_action_id IS NULL)) OR ((booking_type <> 'self'::text) AND (care_action_id IS NOT NULL) AND (episode_id IS NOT NULL))))",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_patient_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL patient_id",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_slot_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL slot_id",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_created_by_user_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL created_by_user_id",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_booking_type_not_null",
+      "type": "n",
+      "definition": "NOT NULL booking_type",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_status_not_null",
+      "type": "n",
+      "definition": "NOT NULL status",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_starts_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL starts_at",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_ends_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL ends_at",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_created_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL created_at",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_patient_id_tstzrange_excl",
+      "type": "x",
+      "definition": "EXCLUDE USING gist (patient_id WITH =, tstzrange(starts_at, ends_at, '[)'::text) WITH &&) WHERE ((status = ANY (ARRAY['held'::text, 'planned'::text, 'completed'::text, 'no_show'::text])))",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_patient_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (patient_id) REFERENCES clinic.patients(id)",
+      "target": "patients"
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_slot_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (slot_id) REFERENCES clinic.time_slots(id)",
+      "target": "time_slots"
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_created_by_user_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (created_by_user_id) REFERENCES clinic.users(id)",
+      "target": "users"
+    },
+    {
+      "table": "appointments",
+      "name": "appointments_episode_id_patient_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (episode_id, patient_id) REFERENCES clinic.episodes(id, patient_id)",
+      "target": "episodes"
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_booking_type_check",
+      "type": "c",
+      "definition": "CHECK ((booking_type = ANY (ARRAY['self'::text, 'referral'::text, 'followup'::text])))",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_status_check",
+      "type": "c",
+      "definition": "CHECK ((status = ANY (ARRAY['waiting'::text, 'offered'::text, 'accepted'::text, 'cancelled'::text, 'expired'::text])))",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_check",
+      "type": "c",
+      "definition": "CHECK ((preferred_from < preferred_until))",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_check1",
+      "type": "c",
+      "definition": "CHECK (((booking_type = 'self'::text) = (care_action_id IS NULL)))",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_patient_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL patient_id",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_specialty_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL specialty_id",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_booking_type_not_null",
+      "type": "n",
+      "definition": "NOT NULL booking_type",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_preferred_from_not_null",
+      "type": "n",
+      "definition": "NOT NULL preferred_from",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_preferred_until_not_null",
+      "type": "n",
+      "definition": "NOT NULL preferred_until",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_status_not_null",
+      "type": "n",
+      "definition": "NOT NULL status",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_created_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL created_at",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_patient_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (patient_id) REFERENCES clinic.patients(id)",
+      "target": "patients"
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_specialty_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (specialty_id) REFERENCES clinic.specialties(id)",
+      "target": "specialties"
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "waitlist_entries_care_action_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (care_action_id) REFERENCES clinic.care_actions(id)",
+      "target": "care_actions"
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_status_check",
+      "type": "c",
+      "definition": "CHECK ((status = ANY (ARRAY['active'::text, 'confirmed'::text, 'declined'::text, 'expired'::text])))",
+      "target": null
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_waitlist_entry_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL waitlist_entry_id",
+      "target": null
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_appointment_id_key",
+      "type": "u",
+      "definition": "UNIQUE (appointment_id)",
+      "target": null
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_waitlist_entry_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (waitlist_entry_id) REFERENCES clinic.waitlist_entries(id)",
+      "target": "waitlist_entries"
+    },
+    {
+      "table": "slot_holds",
+      "name": "slot_holds_appointment_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (appointment_id) REFERENCES clinic.appointments(id)",
+      "target": "appointments"
+    },
+    {
+      "table": "notifications",
+      "name": "notifications_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "notifications",
+      "name": "notifications_user_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL user_id",
+      "target": null
+    },
+    {
+      "table": "notifications",
+      "name": "notifications_message_not_null",
+      "type": "n",
+      "definition": "NOT NULL message",
+      "target": null
+    },
+    {
+      "table": "notifications",
+      "name": "notifications_is_read_not_null",
+      "type": "n",
+      "definition": "NOT NULL is_read",
+      "target": null
+    },
+    {
+      "table": "notifications",
+      "name": "notifications_created_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL created_at",
+      "target": null
+    },
+    {
+      "table": "notifications",
+      "name": "notifications_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "notifications",
+      "name": "notifications_user_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (user_id) REFERENCES clinic.users(id)",
+      "target": "users"
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_appointment_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL appointment_id",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_author_doctor_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL author_doctor_id",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_complaints_not_null",
+      "type": "n",
+      "definition": "NOT NULL complaints",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_examination_not_null",
+      "type": "n",
+      "definition": "NOT NULL examination",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_diagnosis_not_null",
+      "type": "n",
+      "definition": "NOT NULL diagnosis",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_recommendations_not_null",
+      "type": "n",
+      "definition": "NOT NULL recommendations",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_appointment_id_key",
+      "type": "u",
+      "definition": "UNIQUE (appointment_id)",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_appointment_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (appointment_id) REFERENCES clinic.appointments(id)",
+      "target": "appointments"
+    },
+    {
+      "table": "medical_notes",
+      "name": "medical_notes_author_doctor_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (author_doctor_id) REFERENCES clinic.doctors(id)",
+      "target": "doctors"
+    },
+    {
+      "table": "note_addenda",
+      "name": "note_addenda_content_check",
+      "type": "c",
+      "definition": "CHECK ((TRIM(BOTH FROM content) <> ''::text))",
+      "target": null
+    },
+    {
+      "table": "note_addenda",
+      "name": "note_addenda_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "note_addenda",
+      "name": "note_addenda_medical_note_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL medical_note_id",
+      "target": null
+    },
+    {
+      "table": "note_addenda",
+      "name": "note_addenda_doctor_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL doctor_id",
+      "target": null
+    },
+    {
+      "table": "note_addenda",
+      "name": "note_addenda_content_not_null",
+      "type": "n",
+      "definition": "NOT NULL content",
+      "target": null
+    },
+    {
+      "table": "note_addenda",
+      "name": "note_addenda_created_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL created_at",
+      "target": null
+    },
+    {
+      "table": "note_addenda",
+      "name": "note_addenda_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "note_addenda",
+      "name": "note_addenda_medical_note_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (medical_note_id) REFERENCES clinic.medical_notes(id)",
+      "target": "medical_notes"
+    },
+    {
+      "table": "note_addenda",
+      "name": "note_addenda_doctor_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (doctor_id) REFERENCES clinic.doctors(id)",
+      "target": "doctors"
+    },
+    {
+      "table": "study_results",
+      "name": "study_results_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "study_results",
+      "name": "study_results_care_action_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL care_action_id",
+      "target": null
+    },
+    {
+      "table": "study_results",
+      "name": "study_results_entered_by_doctor_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL entered_by_doctor_id",
+      "target": null
+    },
+    {
+      "table": "study_results",
+      "name": "study_results_result_text_not_null",
+      "type": "n",
+      "definition": "NOT NULL result_text",
+      "target": null
+    },
+    {
+      "table": "study_results",
+      "name": "study_results_performed_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL performed_at",
+      "target": null
+    },
+    {
+      "table": "study_results",
+      "name": "study_results_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "study_results",
+      "name": "study_results_care_action_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (care_action_id) REFERENCES clinic.care_actions(id)",
+      "target": "care_actions"
+    },
+    {
+      "table": "study_results",
+      "name": "study_results_entered_by_doctor_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (entered_by_doctor_id) REFERENCES clinic.doctors(id)",
+      "target": "doctors"
+    },
+    {
+      "table": "questionnaires",
+      "name": "questionnaires_version_check",
+      "type": "c",
+      "definition": "CHECK ((version > 0))",
+      "target": null
+    },
+    {
+      "table": "questionnaires",
+      "name": "questionnaires_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "questionnaires",
+      "name": "questionnaires_doctor_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL doctor_id",
+      "target": null
+    },
+    {
+      "table": "questionnaires",
+      "name": "questionnaires_version_not_null",
+      "type": "n",
+      "definition": "NOT NULL version",
+      "target": null
+    },
+    {
+      "table": "questionnaires",
+      "name": "questionnaires_title_not_null",
+      "type": "n",
+      "definition": "NOT NULL title",
+      "target": null
+    },
+    {
+      "table": "questionnaires",
+      "name": "questionnaires_is_active_not_null",
+      "type": "n",
+      "definition": "NOT NULL is_active",
+      "target": null
+    },
+    {
+      "table": "questionnaires",
+      "name": "questionnaires_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "questionnaires",
+      "name": "questionnaires_doctor_id_version_key",
+      "type": "u",
+      "definition": "UNIQUE (doctor_id, version)",
+      "target": null
+    },
+    {
+      "table": "questionnaires",
+      "name": "questionnaires_doctor_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (doctor_id) REFERENCES clinic.doctors(id)",
+      "target": "doctors"
+    },
+    {
+      "table": "questions",
+      "name": "questions_position_check",
+      "type": "c",
+      "definition": "CHECK ((\"position\" > 0))",
+      "target": null
+    },
+    {
+      "table": "questions",
+      "name": "questions_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "questions",
+      "name": "questions_questionnaire_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL questionnaire_id",
+      "target": null
+    },
+    {
+      "table": "questions",
+      "name": "questions_position_not_null",
+      "type": "n",
+      "definition": "NOT NULL \"position\"",
+      "target": null
+    },
+    {
+      "table": "questions",
+      "name": "questions_question_text_not_null",
+      "type": "n",
+      "definition": "NOT NULL question_text",
+      "target": null
+    },
+    {
+      "table": "questions",
+      "name": "questions_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "questions",
+      "name": "questions_questionnaire_id_position_key",
+      "type": "u",
+      "definition": "UNIQUE (questionnaire_id, \"position\")",
+      "target": null
+    },
+    {
+      "table": "questions",
+      "name": "questions_id_questionnaire_id_key",
+      "type": "u",
+      "definition": "UNIQUE (id, questionnaire_id)",
+      "target": null
+    },
+    {
+      "table": "questions",
+      "name": "questions_questionnaire_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (questionnaire_id) REFERENCES clinic.questionnaires(id)",
+      "target": "questionnaires"
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "questionnaire_submissions_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "questionnaire_submissions_appointment_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL appointment_id",
+      "target": null
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "questionnaire_submissions_questionnaire_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL questionnaire_id",
+      "target": null
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "questionnaire_submissions_submitted_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL submitted_at",
+      "target": null
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "questionnaire_submissions_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "questionnaire_submissions_appointment_id_key",
+      "type": "u",
+      "definition": "UNIQUE (appointment_id)",
+      "target": null
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "questionnaire_submissions_id_questionnaire_id_key",
+      "type": "u",
+      "definition": "UNIQUE (id, questionnaire_id)",
+      "target": null
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "questionnaire_submissions_appointment_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (appointment_id) REFERENCES clinic.appointments(id)",
+      "target": "appointments"
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "questionnaire_submissions_questionnaire_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (questionnaire_id) REFERENCES clinic.questionnaires(id)",
+      "target": "questionnaires"
+    },
+    {
+      "table": "questionnaire_answers",
+      "name": "questionnaire_answers_submission_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL submission_id",
+      "target": null
+    },
+    {
+      "table": "questionnaire_answers",
+      "name": "questionnaire_answers_question_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL question_id",
+      "target": null
+    },
+    {
+      "table": "questionnaire_answers",
+      "name": "questionnaire_answers_questionnaire_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL questionnaire_id",
+      "target": null
+    },
+    {
+      "table": "questionnaire_answers",
+      "name": "questionnaire_answers_answer_text_not_null",
+      "type": "n",
+      "definition": "NOT NULL answer_text",
+      "target": null
+    },
+    {
+      "table": "questionnaire_answers",
+      "name": "questionnaire_answers_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (submission_id, question_id)",
+      "target": null
+    },
+    {
+      "table": "questionnaire_answers",
+      "name": "questionnaire_answers_submission_id_questionnaire_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (submission_id, questionnaire_id) REFERENCES clinic.questionnaire_submissions(id, questionnaire_id)",
+      "target": "questionnaire_submissions"
+    },
+    {
+      "table": "questionnaire_answers",
+      "name": "questionnaire_answers_question_id_questionnaire_id_fkey",
+      "type": "f",
+      "definition": "FOREIGN KEY (question_id, questionnaire_id) REFERENCES clinic.questions(id, questionnaire_id)",
+      "target": "questions"
+    },
+    {
+      "table": "audit_log",
+      "name": "audit_log_id_not_null",
+      "type": "n",
+      "definition": "NOT NULL id",
+      "target": null
+    },
+    {
+      "table": "audit_log",
+      "name": "audit_log_db_actor_not_null",
+      "type": "n",
+      "definition": "NOT NULL db_actor",
+      "target": null
+    },
+    {
+      "table": "audit_log",
+      "name": "audit_log_action_not_null",
+      "type": "n",
+      "definition": "NOT NULL action",
+      "target": null
+    },
+    {
+      "table": "audit_log",
+      "name": "audit_log_entity_type_not_null",
+      "type": "n",
+      "definition": "NOT NULL entity_type",
+      "target": null
+    },
+    {
+      "table": "audit_log",
+      "name": "audit_log_created_at_not_null",
+      "type": "n",
+      "definition": "NOT NULL created_at",
+      "target": null
+    },
+    {
+      "table": "audit_log",
+      "name": "audit_log_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (id)",
+      "target": null
+    },
+    {
+      "table": "system_settings",
+      "name": "system_settings_singleton_check",
+      "type": "c",
+      "definition": "CHECK (singleton)",
+      "target": null
+    },
+    {
+      "table": "system_settings",
+      "name": "system_settings_hold_minutes_check",
+      "type": "c",
+      "definition": "CHECK (((hold_minutes >= 1) AND (hold_minutes <= 1440)))",
+      "target": null
+    },
+    {
+      "table": "system_settings",
+      "name": "system_settings_inactivity_days_check",
+      "type": "c",
+      "definition": "CHECK ((inactivity_days > 0))",
+      "target": null
+    },
+    {
+      "table": "system_settings",
+      "name": "system_settings_singleton_not_null",
+      "type": "n",
+      "definition": "NOT NULL singleton",
+      "target": null
+    },
+    {
+      "table": "system_settings",
+      "name": "system_settings_hold_minutes_not_null",
+      "type": "n",
+      "definition": "NOT NULL hold_minutes",
+      "target": null
+    },
+    {
+      "table": "system_settings",
+      "name": "system_settings_inactivity_days_not_null",
+      "type": "n",
+      "definition": "NOT NULL inactivity_days",
+      "target": null
+    },
+    {
+      "table": "system_settings",
+      "name": "system_settings_pkey",
+      "type": "p",
+      "definition": "PRIMARY KEY (singleton)",
+      "target": null
+    },
+    {
+      "table": "users",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "patients",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "doctors",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "doctor_specialties",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "specialties",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "doctor_schedules",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "schedule_breaks",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "time_slots",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "daily_quotas",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "episodes",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "care_actions",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "appointments",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "waitlist_entries",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "slot_holds",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "medical_notes",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "note_addenda",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "study_results",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "questionnaires",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "questions",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "questionnaire_submissions",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    },
+    {
+      "table": "questionnaire_answers",
+      "name": "validate_state",
+      "type": "t",
+      "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED",
+      "target": null
+    }
+  ]
+}
